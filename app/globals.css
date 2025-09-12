@@ -1,0 +1,233 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* CloudReno Brand Colors & Design System */
+@layer base {
+  :root {
+    /* Brand Colors */
+    --coral: hsl(16, 82%, 59%);
+    --coral-light: hsl(16, 82%, 69%);
+    --coral-dark: hsl(16, 82%, 49%);
+    --navy: hsl(210, 29%, 24%);
+    --navy-light: hsl(210, 29%, 34%);
+    --navy-dark: hsl(210, 29%, 14%);
+    --cloudwhite: hsl(0, 0%, 98%);
+    --foreground: hsl(222.2, 84%, 4.9%);
+    --background: hsl(0, 0%, 100%);
+    --muted: hsl(210, 40%, 96%);
+    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
+    --border: hsl(214.3, 31.8%, 91.4%);
+    --input: hsl(214.3, 31.8%, 91.4%);
+    --ring: hsl(222.2, 84%, 4.9%);
+  }
+}
+
+/* Custom Font Imports - Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Typography Scale */
+@layer components {
+  .font-space-grotesk {
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  
+  .font-inter {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-jetbrains-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+  
+  /* CloudReno Brand Colors */
+  .text-coral {
+    color: var(--coral);
+  }
+  
+  .text-navy {
+    color: var(--navy);
+  }
+  
+  .bg-coral {
+    background-color: var(--coral);
+  }
+  
+  .bg-navy {
+    background-color: var(--navy);
+  }
+  
+  .bg-cloudwhite {
+    background-color: var(--cloudwhite);
+  }
+  
+  .border-coral {
+    border-color: var(--coral);
+  }
+  
+  .border-navy {
+    border-color: var(--navy);
+  }
+  
+  /* Gradient Utilities */
+  .gradient-coral {
+    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+  }
+  
+  .gradient-navy-coral {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--coral) 100%);
+  }
+  
+  /* Glass Effect */
+  .glass {
+    @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-lg;
+  }
+  
+  /* Puff Animation for Images */
+  .puff-in {
+    animation: puffIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  
+  @keyframes puffIn {
+    0% {
+      opacity: 0;
+      transform: scale(1.26) rotate(180deg);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1) rotate(0deg);
+    }
+  }
+  
+  /* Button Styles */
+  .btn-coral {
+    @apply bg-coral text-white font-semibold px-6 py-3 rounded-lg hover:bg-coral-dark transition-all duration-300 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-coral-outline {
+    @apply border-2 border-coral text-coral font-semibold px-6 py-3 rounded-lg hover:bg-coral hover:text-white transition-all duration-300;
+  }
+  
+  /* Dotted Pattern Background */
+  .dotted-pattern {
+    background-image: radial-gradient(circle, var(--navy) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
+  }
+}
+
+/* Prose Customization for Blog Content */
+@layer components {
+  .prose {
+    /* Override default prose colors with CloudReno brand */
+    --tw-prose-body: theme(colors.gray.700);
+    --tw-prose-headings: theme(colors.gray.900);
+    --tw-prose-lead: theme(colors.gray.600);
+    --tw-prose-links: var(--coral);
+    --tw-prose-bold: theme(colors.gray.900);
+    --tw-prose-counters: theme(colors.gray.500);
+    --tw-prose-bullets: var(--coral);
+    --tw-prose-hr: theme(colors.gray.200);
+    --tw-prose-quotes: theme(colors.gray.900);
+    --tw-prose-quote-borders: var(--coral);
+    --tw-prose-captions: theme(colors.gray.600);
+    --tw-prose-code: theme(colors.gray.900);
+    --tw-prose-pre-code: theme(colors.gray.200);
+    --tw-prose-pre-bg: theme(colors.gray.800);
+    --tw-prose-th-borders: theme(colors.gray.300);
+    --tw-prose-td-borders: theme(colors.gray.200);
+  }
+  
+  /* Custom prose styles */
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6 {
+    @apply font-space-grotesk font-semibold;
+  }
+  
+  .prose p,
+  .prose li {
+    @apply font-inter;
+  }
+  
+  .prose code {
+    @apply font-jetbrains-mono;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-coral bg-gray-50/50 py-2 rounded-r;
+  }
+  
+  .prose a {
+    @apply text-coral underline hover:decoration-coral transition-colors;
+    text-decoration-color: rgba(237, 111, 64, 0.3);
+  }
+  
+  .prose a:hover {
+    text-decoration-color: var(--coral);
+  }
+  
+  .prose pre {
+    @apply bg-gray-900 rounded-lg;
+  }
+  
+  .prose :not(pre) > code {
+    @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm before:content-none after:content-none;
+  }
+}
+
+/* Line Clamp Utility */
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
+/* Scrollbar Styling */
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Focus States */
+@layer utilities {
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-coral focus:ring-offset-2;
+  }
+}
