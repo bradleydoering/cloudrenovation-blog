@@ -9,7 +9,10 @@ export default {
       upstream.protocol = 'https:';
       upstream.pathname = upstream.pathname.replace(/^\/blog/, '');
       if (upstream.pathname === '') upstream.pathname = '/';
-      return fetch(new Request(upstream, req));
+      const resp = await fetch(upstream.toString(), req);
+      const h = new Headers(resp.headers);
+      h.set('x-cf-worker-route', 'blog');   // debug flag
+      return new Response(resp.body, { status: resp.status, headers: h });
     }
     return fetch(req);
   }

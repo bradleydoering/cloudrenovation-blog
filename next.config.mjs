@@ -1,4 +1,5 @@
 const nextConfig = {
+  basePath: '/blog',
   images: {
     remotePatterns: [
       { protocol: 'https', hostname: 'blog.cloudrenovation.ca' },
