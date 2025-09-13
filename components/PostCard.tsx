@@ -47,7 +47,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
             {post.categories.slice(0, 2).map((category) => (
               <Link
                 key={category.id}
-                href={`/blog/category/${category.slug}`}
+                href={`/category/${category.slug}`}
                 className="inline-block px-2 py-1 text-xs font-medium text-coral bg-coral/10 rounded-full hover:bg-coral/20 transition-colors"
               >
                 {category.name}
@@ -58,7 +58,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
         
         {/* Title */}
         <h2 className="font-space-grotesk font-semibold text-xl mb-3 text-gray-900 leading-tight group-hover:text-coral transition-colors">
-          <Link href={`/blog/${post.slug}`} className="stretched-link">
+          <Link href={`/${post.slug}`} className="stretched-link">
             {post.title}
           </Link>
         </h2>

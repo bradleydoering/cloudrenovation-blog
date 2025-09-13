@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
-import { wp } from '../../lib/wp';
-import { GET_POSTS_SITEMAP } from '../../lib/queries';
-import type { SitemapResponse } from '../../lib/types';
+import { wp } from '../lib/wp';
+import { GET_POSTS_SITEMAP } from '../lib/queries';
+import type { SitemapResponse } from '../lib/types';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cloudrenovation.ca';

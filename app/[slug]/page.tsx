@@ -2,12 +2,12 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import Prose from '../../../components/Prose';
-import SeoHead from '../../../components/SeoHead';
-import { wp, formatDate } from '../../../lib/wp';
-import { GET_POST_BY_SLUG, GET_RECENT_POSTS } from '../../../lib/queries';
-import { generateSEOMetadata, generateJSONLD, generateBreadcrumbJSONLD } from '../../../lib/seo';
-import type { PostResponse, Post } from '../../../lib/types';
+import Prose from '../../components/Prose';
+import SeoHead from '../../components/SeoHead';
+import { wp, formatDate } from '../../lib/wp';
+import { GET_POST_BY_SLUG, GET_RECENT_POSTS } from '../../lib/queries';
+import { generateSEOMetadata, generateJSONLD, generateBreadcrumbJSONLD } from '../../lib/seo';
+import type { PostResponse, Post } from '../../lib/types';
 
 interface PostPageProps {
   params: {
@@ -111,13 +111,13 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className="max-w-3xl mx-auto px-4">
             <ol className="flex items-center space-x-2 text-sm text-gray-600">
               <li>
-                <Link href="/" className="hover:text-coral transition-colors">
+                <Link href="https://cloudrenovation.ca" className="hover:text-coral transition-colors">
                   Home
                 </Link>
               </li>
               <li className="text-gray-400">/</li>
               <li>
-                <Link href="/blog" className="hover:text-coral transition-colors">
+                <Link href="/" className="hover:text-coral transition-colors">
                   Blog
                 </Link>
               </li>
@@ -255,7 +255,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     )}
                     <div className="p-6">
                       <h3 className="font-space-grotesk font-semibold text-lg mb-2 text-gray-900 leading-tight">
-                        <Link href={`/blog/${relatedPost.slug}`} className="hover:text-coral transition-colors">
+                        <Link href={`/${relatedPost.slug}`} className="hover:text-coral transition-colors">
                           {relatedPost.title}
                         </Link>
                       </h3>

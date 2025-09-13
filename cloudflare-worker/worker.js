@@ -7,8 +7,7 @@ export default {
       const upstream = new URL(req.url);
       upstream.hostname = VERCEL_HOST;
       upstream.protocol = 'https:';
-      upstream.pathname = upstream.pathname.replace(/^\/blog/, '');
-      if (upstream.pathname === '') upstream.pathname = '/';
+      // Don't strip /blog - Next.js basePath handles it now
       const resp = await fetch(upstream.toString(), req);
       const h = new Headers(resp.headers);
       h.set('x-cf-worker-route', 'blog');   // debug flag
