@@ -1,7 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PostCard from '../components/PostCard';
-import SeoHead from '../components/SeoHead';
 import { wp, transformPost } from '../lib/wp';
 import { GET_ALL_POSTS } from '../lib/queries';
 import { generateBlogIndexSEO } from '../lib/seo';
@@ -76,10 +75,7 @@ export default async function BlogIndex() {
   const seoData = generateBlogIndexSEO();
 
   return (
-    <>
-      <SeoHead seo={seoData} />
-      
-      <div className="min-h-screen bg-cloudwhite dot-grid-light">
+    <div className="min-h-screen bg-cloudwhite dot-grid-light">
         {/* Header Section */}
         <div className="bg-navy blueprint-grid py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
@@ -132,6 +128,5 @@ export default async function BlogIndex() {
           </div>
         </div>
       </div>
-    </>
   );
 }
