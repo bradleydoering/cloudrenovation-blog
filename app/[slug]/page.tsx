@@ -105,7 +105,7 @@ export default async function PostPage({ params }: PostPageProps) {
         breadcrumbJsonLd={breadcrumbJsonLd} 
       />
       
-      <article className="min-h-screen bg-cloudwhite">
+      <article className="min-h-screen bg-cloudwhite dot-grid-light">
         {/* Breadcrumbs */}
         <nav className="bg-gray-50 py-4">
           <div className="max-w-3xl mx-auto px-4">
@@ -139,7 +139,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   <Link
                     key={category.id}
                     href={`/blog/category/${category.slug}`}
-                    className="inline-block px-3 py-1 text-sm font-medium text-coral bg-coral/10 rounded-full hover:bg-coral/20 transition-colors"
+                    className="inline-block px-3 py-1 text-sm font-medium text-coral bg-coral/10 border border-coral/20 hover:bg-coral/20 transition-colors"
                   >
                     {category.name}
                   </Link>
@@ -163,7 +163,7 @@ export default async function PostPage({ params }: PostPageProps) {
                       alt={post.author.name}
                       width={32}
                       height={32}
-                      className="rounded-full mr-3"
+                      className="mr-3 border border-gray-200"
                     />
                   )}
                   <span className="font-medium">{post.author.name}</span>
@@ -191,7 +191,7 @@ export default async function PostPage({ params }: PostPageProps) {
                   alt={post.featuredImage.alt || post.title}
                   width={post.featuredImage.width || 1200}
                   height={post.featuredImage.height || 630}
-                  className="w-full rounded-lg shadow-lg"
+                  className="w-full border-2 border-gray-200"
                   priority
                 />
                 {post.featuredImage.caption && (
@@ -222,7 +222,7 @@ export default async function PostPage({ params }: PostPageProps) {
                     <Link
                       key={tag.id}
                       href={`/blog/tag/${tag.slug}`}
-                      className="inline-block px-3 py-1 text-sm text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition-colors"
+                      className="inline-block px-3 py-1 text-sm text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition-colors"
                     >
                       #{tag.name}
                     </Link>
@@ -242,7 +242,7 @@ export default async function PostPage({ params }: PostPageProps) {
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {related.map((relatedPost) => (
-                  <article key={relatedPost.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+                  <article key={relatedPost.id} className="bg-white border-2 border-gray-200 hover:border-coral transition-colors overflow-hidden dot-grid-light">
                     {relatedPost.featuredImage?.url && (
                       <div className="aspect-video relative">
                         <Image
@@ -274,7 +274,7 @@ export default async function PostPage({ params }: PostPageProps) {
         )}
 
         {/* CTA Section */}
-        <section className="bg-gradient-to-br from-navy via-navy/90 to-coral/20 py-16">
+        <section className="bg-navy blueprint-grid py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="font-space-grotesk font-bold text-3xl mb-4 text-white">
               Ready to Start Your Renovation?
@@ -284,7 +284,7 @@ export default async function PostPage({ params }: PostPageProps) {
             </p>
             <a
               href="https://cloudrenovation.ca/contact"
-              className="inline-block bg-coral text-white font-semibold px-8 py-4 rounded-lg hover:bg-coral/90 transition-colors shadow-lg hover:shadow-xl"
+              className="btn-coral inline-block px-8 py-4 text-white bg-coral hover:bg-coral-dark border-2 border-coral"
             >
               Get Your Free Consultation
             </a>

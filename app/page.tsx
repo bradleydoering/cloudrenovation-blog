@@ -58,7 +58,7 @@ export default async function BlogIndex() {
             <p className="text-xl text-gray-600 mb-8">
               Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.
             </p>
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 border-2 border-gray-200 dot-grid-light">
               <h2 className="font-space-grotesk font-semibold text-2xl mb-4 text-gray-900">
                 Coming Soon
               </h2>
@@ -79,9 +79,9 @@ export default async function BlogIndex() {
     <>
       <SeoHead seo={seoData} />
       
-      <div className="min-h-screen bg-cloudwhite">
+      <div className="min-h-screen bg-cloudwhite dot-grid-light">
         {/* Header Section */}
-        <div className="bg-gradient-to-br from-navy via-navy/90 to-coral/20 py-16">
+        <div className="bg-navy blueprint-grid py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h1 className="font-space-grotesk font-bold text-4xl md:text-5xl mb-6 text-white">
               Cloud Renovation Blog
@@ -125,7 +125,7 @@ export default async function BlogIndex() {
             </p>
             <a
               href="https://cloudrenovation.ca/contact"
-              className="inline-block bg-gradient-to-r from-coral to-coral/80 text-white font-semibold px-8 py-4 rounded-lg hover:from-coral/90 hover:to-coral/70 transition-all duration-300 shadow-lg hover:shadow-xl"
+              className="btn-coral inline-block px-8 py-4"
             >
               Get Started Today
             </a>

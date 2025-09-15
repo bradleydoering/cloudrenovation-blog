@@ -16,9 +16,8 @@ export default function PostCard({ post, className, priority = false }: PostCard
   return (
     <article 
       className={clsx(
-        'group bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300',
-        'border border-gray-100 overflow-hidden',
-        'hover:-translate-y-1 hover:border-gray-200',
+        'group bg-white border-2 border-gray-200 hover:border-coral transition-colors duration-200',
+        'overflow-hidden dot-grid-light',
         className
       )}
     >
@@ -29,13 +28,13 @@ export default function PostCard({ post, className, priority = false }: PostCard
             src={post.featuredImage!.url}
             alt={post.featuredImage!.alt || post.title}
             fill
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="object-cover"
             priority={priority}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           />
           
-          {/* Glass overlay effect on hover */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Sharp overlay on hover */}
+          <div className="absolute inset-0 bg-coral/5 opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
         </div>
       )}
       
@@ -48,7 +47,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
               <Link
                 key={category.id}
                 href={`/category/${category.slug}`}
-                className="inline-block px-2 py-1 text-xs font-medium text-coral bg-coral/10 rounded-full hover:bg-coral/20 transition-colors"
+                className="inline-block px-2 py-1 text-xs font-medium text-coral bg-coral/10 border border-coral/20 hover:bg-coral/20 transition-colors"
               >
                 {category.name}
               </Link>
@@ -80,7 +79,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
                     alt={post.author.name}
                     width={20}
                     height={20}
-                    className="rounded-full mr-2"
+                    className="mr-2 border border-gray-200"
                   />
                 )}
                 <span className="font-medium">{post.author.name}</span>

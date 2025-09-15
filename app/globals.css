@@ -86,18 +86,23 @@
     border-color: var(--navy);
   }
   
-  /* Gradient Utilities */
-  .gradient-coral {
-    background: linear-gradient(135deg, var(--coral) 0%, var(--coral-light) 100%);
+  /* Grid Pattern Backgrounds */
+  .blueprint-grid {
+    background-image: url('https://pub-15e1a6b274ef4e41a5380e81c8c21972.r2.dev/blueprint_grid_8pt.png');
+    background-repeat: repeat;
+    background-size: 32px 32px; /* 8pt grid at 4x scale */
   }
   
-  .gradient-navy-coral {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--coral) 100%);
+  .dot-grid {
+    background-image: radial-gradient(circle, #333333 1.15px, transparent 1.15px);
+    background-size: 24px 24px;
+    background-repeat: repeat;
   }
   
-  /* Glass Effect */
-  .glass {
-    @apply backdrop-blur-sm bg-white/80 border border-white/20 shadow-lg;
+  .dot-grid-light {
+    background-image: radial-gradient(circle, rgba(51, 51, 51, 0.1) 1.15px, transparent 1.15px);
+    background-size: 24px 24px;
+    background-repeat: repeat;
   }
   
   /* Puff Animation for Images */
@@ -116,13 +121,13 @@
     }
   }
   
-  /* Button Styles */
+  /* Button Styles - CloudReno Sharp Aesthetic */
   .btn-coral {
-    @apply bg-coral text-white font-semibold px-6 py-3 rounded-lg hover:bg-coral-dark transition-all duration-300 shadow-md hover:shadow-lg;
+    @apply bg-coral text-white font-semibold px-6 py-3 hover:bg-coral-dark transition-colors duration-200 border-2 border-coral;
   }
   
   .btn-coral-outline {
-    @apply border-2 border-coral text-coral font-semibold px-6 py-3 rounded-lg hover:bg-coral hover:text-white transition-all duration-300;
+    @apply border-2 border-coral text-coral font-semibold px-6 py-3 hover:bg-coral hover:text-white transition-colors duration-200;
   }
   
   /* Dotted Pattern Background */
