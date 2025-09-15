@@ -50,6 +50,12 @@ export const POST_FRAGMENT = `
         count
       }
     }
+  }
+`;
+
+// SEO Fragment - separate so we can use it conditionally
+export const SEO_FRAGMENT = `
+  fragment SeoFields on Post {
     seo {
       title
       metaDesc

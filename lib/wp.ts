@@ -70,15 +70,15 @@ export function transformPost(wpPost: any): any {
       canonical: wpPost.seo.canonical,
       ogTitle: wpPost.seo.opengraphTitle,
       ogDescription: wpPost.seo.opengraphDescription,
-      ogImage: wpPost.seo.opengraphImage?.node ? {
-        url: wpPost.seo.opengraphImage.node.sourceUrl,
-        width: wpPost.seo.opengraphImage.node.mediaDetails?.width,
-        height: wpPost.seo.opengraphImage.node.mediaDetails?.height,
+      ogImage: wpPost.seo.opengraphImage ? {
+        url: wpPost.seo.opengraphImage.sourceUrl,
+        width: wpPost.seo.opengraphImage.mediaDetails?.width,
+        height: wpPost.seo.opengraphImage.mediaDetails?.height,
       } : undefined,
       twitterTitle: wpPost.seo.twitterTitle,
       twitterDescription: wpPost.seo.twitterDescription,
-      twitterImage: wpPost.seo.twitterImage?.node ? {
-        url: wpPost.seo.twitterImage.node.sourceUrl,
+      twitterImage: wpPost.seo.twitterImage ? {
+        url: wpPost.seo.twitterImage.sourceUrl,
       } : undefined,
       schema: wpPost.seo.schema?.raw,
       focusKeyword: wpPost.seo.focuskw,
