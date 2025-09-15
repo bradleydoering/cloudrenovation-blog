@@ -50,12 +50,6 @@ export const POST_FRAGMENT = `
         count
       }
     }
-  }
-`;
-
-// SEO Fragment - separate so we can use it conditionally
-export const SEO_FRAGMENT = `
-  fragment SeoFields on Post {
     seo {
       title
       metaDesc
@@ -83,6 +77,7 @@ export const SEO_FRAGMENT = `
     }
   }
 `;
+
 
 // Get all published posts
 export const GET_ALL_POSTS = `
