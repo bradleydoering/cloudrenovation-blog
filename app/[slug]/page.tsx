@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Prose from '../../components/Prose';
 import SeoHead from '../../components/SeoHead';
-import { wp, formatDate } from '../../lib/wp';
+import { wp, formatDate, transformPost } from '../../lib/wp';
 import { GET_POST_BY_SLUG, GET_RECENT_POSTS } from '../../lib/queries';
 import { generateSEOMetadata, generateJSONLD, generateBreadcrumbJSONLD } from '../../lib/seo';
 import type { PostResponse, Post } from '../../lib/types';
@@ -20,7 +20,7 @@ export const revalidate = 60; // ISR: revalidate every 60 seconds
 async function getPost(slug: string): Promise<Post | null> {
   try {
     const data = await wp<PostResponse>(GET_POST_BY_SLUG, { slug });
-    return data.post;
+    return data.post ? transformPost(data.post) : null;
   } catch (error) {
     console.error(`Failed to fetch post with slug: ${slug}`, error);
     return null;
@@ -33,7 +33,7 @@ async function getRelatedPosts(excludeId: string): Promise<Post[]> {
       first: 3, 
       notIn: [excludeId] 
     });
-    return data.posts.nodes;
+    return data.posts.nodes.map(transformPost);
   } catch (error) {
     console.error('Failed to fetch related posts:', error);
     return [];

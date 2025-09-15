@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PostCard from '../components/PostCard';
 import SeoHead from '../components/SeoHead';
-import { wp } from '../lib/wp';
+import { wp, transformPost } from '../lib/wp';
 import { GET_ALL_POSTS } from '../lib/queries';
 import { generateBlogIndexSEO } from '../lib/seo';
 import type { PostsResponse } from '../lib/types';
@@ -36,7 +36,7 @@ export const revalidate = 60; // ISR: revalidate every 60 seconds
 async function getPosts() {
   try {
     const data = await wp<PostsResponse>(GET_ALL_POSTS, { first: 12 });
-    return data.posts.nodes;
+    return data.posts.nodes.map(transformPost);
   } catch (error) {
     console.error('Failed to fetch posts:', error);
     return [];
