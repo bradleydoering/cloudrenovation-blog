@@ -5,21 +5,21 @@
 /* CloudReno Brand Colors & Design System */
 @layer base {
   :root {
-    /* Brand Colors */
-    --coral: hsl(16, 82%, 59%);
-    --coral-light: hsl(16, 82%, 69%);
-    --coral-dark: hsl(16, 82%, 49%);
-    --navy: hsl(210, 29%, 24%);
-    --navy-light: hsl(210, 29%, 34%);
-    --navy-dark: hsl(210, 29%, 14%);
-    --cloudwhite: hsl(0, 0%, 98%);
-    --foreground: hsl(222.2, 84%, 4.9%);
-    --background: hsl(0, 0%, 100%);
-    --muted: hsl(210, 40%, 96%);
-    --muted-foreground: hsl(215.4, 16.3%, 46.9%);
-    --border: hsl(214.3, 31.8%, 91.4%);
-    --input: hsl(214.3, 31.8%, 91.4%);
-    --ring: hsl(222.2, 84%, 4.9%);
+    /* Brand Colors - CloudReno Official */
+    --coral: #ff663f;
+    --coral-light: #ff8066;
+    --coral-dark: #e5593a;
+    --navy: #0d1220;
+    --navy-light: #1a2333;
+    --navy-dark: #070b11;
+    --cloudwhite: #f3f6f9;
+    --foreground: #0d1220;
+    --background: #f3f6f9;
+    --muted: #e6ebf0;
+    --muted-foreground: #6b7280;
+    --border: #d1d5db;
+    --input: #d1d5db;
+    --ring: #0d1220;
   }
 }
 
@@ -35,6 +35,7 @@
   
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
   
@@ -44,19 +45,21 @@
 }
 
 /* Typography Scale */
-@layer components {
+@layer utilities {
   .font-space-grotesk {
-    font-family: 'Space Grotesk', sans-serif;
+    font-family: 'Space Grotesk', sans-serif !important;
   }
   
   .font-inter {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif !important;
   }
   
   .font-jetbrains-mono {
-    font-family: 'JetBrains Mono', monospace;
+    font-family: 'JetBrains Mono', monospace !important;
   }
-  
+}
+
+@layer components {
   /* CloudReno Brand Colors */
   .text-coral {
     color: var(--coral);
@@ -121,13 +124,15 @@
     }
   }
   
-  /* Button Styles - CloudReno Sharp Aesthetic */
+  /* Button Styles - CloudReno Clipped Corner Aesthetic */
   .btn-coral {
-    @apply bg-coral text-white font-semibold px-6 py-3 hover:bg-coral-dark transition-colors duration-200 border-2 border-coral;
+    @apply bg-coral text-white font-semibold px-6 py-3 hover:bg-coral-dark transition-colors duration-200 border-2 border-coral relative;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   }
   
   .btn-coral-outline {
-    @apply border-2 border-coral text-coral font-semibold px-6 py-3 hover:bg-coral hover:text-white transition-colors duration-200;
+    @apply border-2 border-coral text-coral font-semibold px-6 py-3 hover:bg-coral hover:text-white transition-colors duration-200 relative;
+    clip-path: polygon(12px 0, 100% 0, 100% calc(100% - 12px), calc(100% - 12px) 100%, 0 100%, 0 12px);
   }
   
   /* Dotted Pattern Background */

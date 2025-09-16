@@ -3,11 +3,11 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    default: 'Cloud Renovation Blog',
-    template: '%s | Cloud Renovation'
+    default: 'Home in the Clouds - Cloud Renovation',
+    template: '%s | Home in the Clouds'
   },
-  description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
-  keywords: ['home renovation', 'kitchen remodeling', 'bathroom renovation', 'home improvement', 'interior design'],
+  description: 'Home in the Clouds - Cloud Renovation\'s official blog with expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
+  keywords: ['home renovation', 'kitchen remodeling', 'bathroom renovation', 'home improvement', 'interior design', 'blog', 'renovation blog', 'home in the clouds'],
   authors: [{ name: 'Cloud Renovation Team' }],
   creator: 'Cloud Renovation',
   publisher: 'Cloud Renovation',
@@ -20,21 +20,21 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: process.env.NEXT_PUBLIC_SITE_URL || 'https://cloudrenovation.ca',
     siteName: 'Cloud Renovation',
-    title: 'Cloud Renovation Blog',
-    description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
+    title: 'Home in the Clouds',
+    description: 'Home in the Clouds - Cloud Renovation\'s official blog with expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
     images: [
       {
         url: '/og-default.jpg',
         width: 1200,
         height: 630,
-        alt: 'Cloud Renovation Blog',
+        alt: 'Home in the Clouds',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cloud Renovation Blog',
-    description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
+    title: 'Home in the Clouds',
+    description: 'Home in the Clouds - Cloud Renovation\'s official blog with expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
     images: ['/og-default.jpg'],
   },
   robots: {
@@ -60,6 +60,9 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="icon" type="image/webp" href="/cloud-logo.webp" />
+        <link rel="shortcut icon" type="image/webp" href="/cloud-logo.webp" />
+        <link rel="apple-touch-icon" href="/cloud-logo.webp" />
       </head>
       <body className="font-inter antialiased">
         {children}

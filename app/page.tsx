@@ -1,16 +1,17 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PostCard from '../components/PostCard';
+import Footer from '../components/Footer';
 import { wp, transformPost } from '../lib/wp';
 import { GET_ALL_POSTS } from '../lib/queries';
 import { generateBlogIndexSEO } from '../lib/seo';
 import type { PostsResponse } from '../lib/types';
 
 export const metadata: Metadata = {
-  title: 'Blog - Cloud Renovation',
+  title: 'Home in the Clouds - Cloud Renovation',
   description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
   openGraph: {
-    title: 'Cloud Renovation Blog',
+    title: 'Home in the Clouds',
     description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
     url: 'https://cloudrenovation.ca/blog',
     siteName: 'Cloud Renovation',
@@ -18,13 +19,13 @@ export const metadata: Metadata = {
       url: 'https://cloudrenovation.ca/og-blog.jpg',
       width: 1200,
       height: 630,
-      alt: 'Cloud Renovation Blog',
+      alt: 'Home in the Clouds - Cloud Renovation Blog',
     }],
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Cloud Renovation Blog',
+    title: 'Home in the Clouds',
     description: 'Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.',
     images: ['https://cloudrenovation.ca/og-blog.jpg'],
   },
@@ -51,8 +52,8 @@ export default async function BlogIndex() {
       <div className="min-h-screen bg-cloudwhite">
         <div className="max-w-4xl mx-auto px-4 py-16">
           <div className="text-center">
-            <h1 className="font-space-grotesk font-bold text-4xl mb-6 text-gray-900">
-              Cloud Renovation Blog
+            <h1 className="font-jetbrains-mono font-bold text-4xl mb-6 text-gray-900">
+              Home in the Clouds
             </h1>
             <p className="text-xl text-gray-600 mb-8">
               Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.
@@ -79,8 +80,8 @@ export default async function BlogIndex() {
         {/* Header Section */}
         <div className="bg-navy blueprint-grid py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
-            <h1 className="font-space-grotesk font-bold text-4xl md:text-5xl mb-6 text-white">
-              Cloud Renovation Blog
+            <h1 className="font-jetbrains-mono font-bold text-4xl md:text-5xl mb-6 text-white">
+              Home in the Clouds
             </h1>
             <p className="text-xl text-gray-100 max-w-2xl mx-auto">
               Expert insights on home renovation, kitchen and bathroom remodeling, and modern home improvement techniques.
@@ -111,7 +112,7 @@ export default async function BlogIndex() {
         </div>
 
         {/* CTA Section */}
-        <div className="bg-gray-50 py-16">
+        <div className="bg-cloudwhite dot-grid-light py-16">
           <div className="max-w-4xl mx-auto px-4 text-center">
             <h2 className="font-space-grotesk font-bold text-3xl mb-4 text-gray-900">
               Ready to Transform Your Home?
@@ -120,13 +121,15 @@ export default async function BlogIndex() {
               Get expert renovation advice and turn your house into the home of your dreams.
             </p>
             <a
-              href="https://cloudrenovation.ca/contact"
+              href="https://cloudrenovation.ca/get-started"
               className="btn-coral inline-block px-8 py-4"
             >
               Get Started Today
             </a>
           </div>
         </div>
+
+        <Footer />
       </div>
   );
 }

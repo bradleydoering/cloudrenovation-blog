@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Prose from '../../components/Prose';
+import Footer from '../../components/Footer';
 import { wp, formatDate, transformPost } from '../../lib/wp';
 import { GET_POST_BY_SLUG, GET_RECENT_POSTS } from '../../lib/queries';
 import { generateSEOMetadata, generateJSONLD, generateBreadcrumbJSONLD } from '../../lib/seo';
@@ -227,14 +228,14 @@ export default async function PostPage({ params }: PostPageProps) {
 
         {/* Related Posts */}
         {related.length > 0 && (
-          <section className="bg-gray-50 py-16">
+          <section className="bg-cloudwhite dot-grid-light py-16">
             <div className="max-w-6xl mx-auto px-4">
               <h2 className="font-space-grotesk font-bold text-3xl mb-8 text-gray-900 text-center">
                 Related Articles
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {related.map((relatedPost) => (
-                  <article key={relatedPost.id} className="bg-white border-2 border-gray-200 hover:border-coral transition-colors overflow-hidden dot-grid-light">
+                  <article key={relatedPost.id} className="bg-white border-2 border-gray-200 hover:border-coral transition-colors overflow-hidden">
                     {relatedPost.featuredImage?.url && (
                       <div className="aspect-video relative">
                         <Image
@@ -282,7 +283,8 @@ export default async function PostPage({ params }: PostPageProps) {
             </a>
           </div>
         </section>
+
+        <Footer />
       </article>
-    </>
   );
 }

@@ -17,7 +17,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
     <article 
       className={clsx(
         'group bg-white border-2 border-gray-200 hover:border-coral transition-colors duration-200',
-        'overflow-hidden dot-grid-light',
+        'overflow-hidden',
         className
       )}
     >
