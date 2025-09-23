@@ -12,6 +12,7 @@ interface PostCardProps {
 
 export default function PostCard({ post, className, priority = false }: PostCardProps) {
   const hasImage = post.featuredImage?.url;
+  const excerptText = (post.excerpt || '').replace(/<[^>]*>/g, '').trim();
   
   return (
     <article 
@@ -64,7 +65,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
         
         {/* Excerpt */}
         <p className="text-gray-600 text-base leading-relaxed mb-4 line-clamp-3">
-          {post.excerpt}
+          {excerptText}
         </p>
         
         {/* Meta info */}

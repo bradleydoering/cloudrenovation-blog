@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://cloudrenovation.ca';
+
 export const metadata: Metadata = {
   title: {
     default: 'Home in the Clouds - Cloud Renovation',
@@ -14,6 +16,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://cloudrenovation.ca'),
   alternates: {
     canonical: '/',
+  },
+  icons: {
+    icon: '/cloud-logo.webp',
+    shortcut: '/cloud-logo.webp',
+    apple: '/cloud-logo.webp',
   },
   openGraph: {
     type: 'website',
@@ -60,9 +67,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="icon" type="image/webp" href="/cloud-logo.webp" />
-        <link rel="shortcut icon" type="image/webp" href="/cloud-logo.webp" />
-        <link rel="apple-touch-icon" href="/cloud-logo.webp" />
       </head>
       <body className="font-inter antialiased">
         {children}

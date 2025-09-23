@@ -1,11 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import PostCard from '../components/PostCard';
-import Footer from '../components/Footer';
 import { wp, transformPost } from '../lib/wp';
-import { GET_ALL_POSTS } from '../lib/queries';
+import { GET_ALL_POSTS, GET_POSTS_BY_CATEGORY, GET_CATEGORIES } from '../lib/queries';
 import { generateBlogIndexSEO } from '../lib/seo';
-import type { PostsResponse } from '../lib/types';
+import type { PostsResponse, Category } from '../lib/types';
 
 export const metadata: Metadata = {
   title: 'Home in the Clouds - Cloud Renovation',
@@ -33,18 +33,37 @@ export const metadata: Metadata = {
 
 export const revalidate = 60; // ISR: revalidate every 60 seconds
 
-async function getPosts() {
+async function getPosts(categorySlug?: string) {
   try {
-    const data = await wp<PostsResponse>(GET_ALL_POSTS, { first: 12 });
-    return data.posts.nodes.map(transformPost);
+    if (categorySlug) {
+      const data = await wp<PostsResponse>(GET_POSTS_BY_CATEGORY, { categorySlug, first: 12 });
+      return data.posts.nodes.map(transformPost);
+    } else {
+      const data = await wp<PostsResponse>(GET_ALL_POSTS, { first: 12 });
+      return data.posts.nodes.map(transformPost);
+    }
   } catch (error) {
     console.error('Failed to fetch posts:', error);
     return [];
   }
 }
 
-export default async function BlogIndex() {
-  const posts = await getPosts();
+async function getCategories(): Promise<Category[]> {
+  try {
+    const data = await wp<{ categories: { nodes: Category[] } }>(GET_CATEGORIES, {});
+    return data.categories.nodes;
+  } catch (error) {
+    console.error('Failed to fetch categories:', error);
+    return [];
+  }
+}
+
+export default async function BlogIndex({ searchParams }: { searchParams?: { category?: string } }) {
+  const category = searchParams?.category;
+  const [posts, categories] = await Promise.all([
+    getPosts(category),
+    getCategories()
+  ]);
   
   if (!posts.length) {
     // If no posts are found, show a coming soon message instead of 404
@@ -89,8 +108,42 @@ export default async function BlogIndex() {
           </div>
         </div>
 
+        {/* Categories Filter */}
+        <div className="max-w-6xl mx-auto px-4 py-8">
+          <div className="flex flex-wrap gap-3 justify-center">
+            <Link
+              href="/"
+              className={
+                `px-4 py-2 text-sm font-medium border-2 transition-colors ${!category ? 'bg-coral text-white border-coral' : 'bg-white text-gray-700 border-gray-200 hover:border-coral hover:text-coral'}`
+              }
+              prefetch={false}
+            >
+              All
+            </Link>
+            {categories.map((cat) => (
+              <Link
+                key={cat.id}
+                href={`/?category=${encodeURIComponent(cat.slug)}`}
+                className={
+                  `px-4 py-2 text-sm font-medium border-2 transition-colors ${category === cat.slug ? 'bg-coral text-white border-coral' : 'bg-white text-gray-700 border-gray-200 hover:border-coral hover:text-coral'}`
+                }
+                prefetch={false}
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+
         {/* Blog Posts Grid */}
         <div className="max-w-6xl mx-auto px-4 py-16">
+          {/* Empty state for selected category */}
+          {category && posts.length === 0 && (
+            <div className="text-center text-gray-700 bg-white border-2 border-gray-200 p-8">
+              No articles found in “{category}” yet.
+            </div>
+          )}
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {posts.map((post, index) => (
               <PostCard 
@@ -128,8 +181,6 @@ export default async function BlogIndex() {
             </a>
           </div>
         </div>
-
-        <Footer />
       </div>
   );
 }

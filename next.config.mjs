@@ -5,7 +5,8 @@ const nextConfig = {
       { protocol: 'https', hostname: 'blog.cloudrenovation.ca' },
       { protocol: 'https', hostname: '*.wp.com' },
       { protocol: 'https', hostname: 'secure.gravatar.com' },
-      { protocol: 'https', hostname: 'gravatar.com' }
+      { protocol: 'https', hostname: 'gravatar.com' },
+      { protocol: 'https', hostname: '*.gravatar.com' }
     ]
   }
 };

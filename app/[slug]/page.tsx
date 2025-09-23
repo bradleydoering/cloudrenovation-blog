@@ -3,7 +3,6 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import Prose from '../../components/Prose';
-import Footer from '../../components/Footer';
 import { wp, formatDate, transformPost } from '../../lib/wp';
 import { GET_POST_BY_SLUG, GET_RECENT_POSTS } from '../../lib/queries';
 import { generateSEOMetadata, generateJSONLD, generateBreadcrumbJSONLD } from '../../lib/seo';
@@ -283,8 +282,6 @@ export default async function PostPage({ params }: PostPageProps) {
             </a>
           </div>
         </section>
-
-        <Footer />
       </article>
   );
 }
