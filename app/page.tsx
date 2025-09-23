@@ -32,6 +32,9 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 60; // ISR: revalidate every 60 seconds
+// Use dynamic rendering so searchParams (e.g., ?category=) take effect on the server.
+// Data fetches still leverage ISR via the GraphQL client's fetch revalidation.
+export const dynamic = 'force-dynamic';
 
 async function getPosts(categorySlug?: string) {
   try {
