@@ -130,7 +130,7 @@ export default async function PostPage({ params }: PostPageProps) {
                 {post.categories.slice(0, 3).map((category) => (
                   <Link
                     key={category.id}
-                    href={`/blog/category/${category.slug}`}
+                    href={`/?category=${encodeURIComponent(category.slug)}`}
                     className="inline-block px-3 py-1 text-sm font-medium text-coral bg-coral/10 border border-coral/20 hover:bg-coral/20 transition-colors"
                   >
                     {category.name}
@@ -211,13 +211,12 @@ export default async function PostPage({ params }: PostPageProps) {
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {post.tags.map((tag) => (
-                    <Link
+                    <span
                       key={tag.id}
-                      href={`/blog/tag/${tag.slug}`}
-                      className="inline-block px-3 py-1 text-sm text-gray-600 bg-gray-100 border border-gray-200 hover:bg-gray-200 transition-colors"
+                      className="inline-block px-3 py-1 text-sm text-gray-600 bg-gray-100 border border-gray-200"
                     >
                       #{tag.name}
-                    </Link>
+                    </span>
                   ))}
                 </div>
               </div>

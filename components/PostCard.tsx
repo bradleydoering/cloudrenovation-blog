@@ -47,7 +47,7 @@ export default function PostCard({ post, className, priority = false }: PostCard
             {post.categories.slice(0, 2).map((category) => (
               <Link
                 key={category.id}
-                href={`/category/${category.slug}`}
+                href={`/?category=${encodeURIComponent(category.slug)}`}
                 className="inline-block px-2 py-1 text-xs font-medium text-coral bg-coral/10 border border-coral/20 hover:bg-coral/20 transition-colors"
               >
                 {category.name}

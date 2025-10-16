@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/cloud-logo.webp',
-    shortcut: '/cloud-logo.webp',
-    apple: '/cloud-logo.webp',
+    icon: '/blog/cloud-logo.webp',
+    shortcut: '/blog/cloud-logo.webp',
+    apple: '/blog/cloud-logo.webp',
   },
   openGraph: {
     type: 'website',
